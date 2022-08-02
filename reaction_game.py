@@ -25,3 +25,9 @@ led.value(0)
 timer_light_off = utime.ticks_ms()
 right_button.irq(trigger=machine.Pin.IRQ_RISING, handler=button_press)
 left_button.irq(trigger=machine.Pin.IRQ_RISING, handler=button_press)
+
+
+
+
+
+#https://docs.sunfounder.com/projects/thales-kit/en/latest/reaction_game.html
