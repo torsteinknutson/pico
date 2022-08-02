@@ -18,3 +18,4 @@ while True:
         utime.sleep(2)
    
     
+#https://docs.sunfounder.com/projects/thales-kit/en/latest/turn_the_knob.html
