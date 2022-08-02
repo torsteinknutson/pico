@@ -3,19 +3,25 @@ import utime
 import urandom
 
 led = machine.Pin(15, machine.Pin.OUT)
-button = machine.Pin(14, machine.Pin.IN)
+left_button = machine.Pin(14, machine.Pin.IN)
+right_button = machine.Pin(16, machine.Pin.IN)
 
 def button_press(pin):
-    button.irq(handler=None)
-    reaction_time = utime.ticks_diff(utime.ticks_ms(), timer_light_off)
-    print("Reaksjonstiden din er " + str(reaction_time) + " millisekunder!")
-    if reaction_time <= 250:
-        print("Du er raskere enn gjennomsnittsmennesket!")
+    left_button.irq(handler=None)
+    right_button.irq(handler=None)
+    rection_time = utime.ticks_diff(utime.ticks_ms(), timer_light_off)
+    if pin == left_button:
+        print("Nummer 1 vant!!")
+    elif pin == right_button:
+        print("Nummer 2 vant!!!")
+    print("Reaksjonstiden din er " + str(rection_time) + " millisekunder!")
+
+print(" - - - Spillet er igang - - - ")
+
 
 led.value(1)
-utime.sleep(urandom.uniform(5, 10))
+utime.sleep(urandom.uniform(5, 20))
 led.value(0)
 timer_light_off = utime.ticks_ms()
-button.irq(trigger=machine.Pin.IRQ_RISING, handler=button_press)
-
-#https://docs.sunfounder.com/projects/thales-kit/en/latest/reaction_game.html
+right_button.irq(trigger=machine.Pin.IRQ_RISING, handler=button_press)
+left_button.irq(trigger=machine.Pin.IRQ_RISING, handler=button_press)
