@@ -1,2 +1,2 @@
 # pico
-code for raspberry pico
+code for raspberry pi pico
